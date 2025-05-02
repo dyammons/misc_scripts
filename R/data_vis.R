@@ -1,3 +1,16 @@
+### Boxplot 
+p <- ggplot(dat, aes(x = condition, y = value, colour = condition, fill = condition)) + 
+  geom_boxplot(linewidth = 1, alpha = 0.5) +
+  guides(fill = "none") +
+  guides(colour = "none") +
+  ggnewscale::new_scale_colour() +
+  geom_point(aes(colour = sample), size = 2, position = position_jitter(width = 0.25)) +
+  theme_classic() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text = element_text(color = "black")
+  )
+
 
 ### Stacked bar graph - raw counts
 # Input:
@@ -12,7 +25,8 @@ p <- ggplot(deg_cnts, aes(x = contrast, y = COUNTS, fill = direction, colour = d
   theme_classic() +
   theme(
     axis.line.x = element_blank(),
-    axis.ticks.x = element_blank()
+    axis.ticks.x = element_blank(),
+    axis.text = element_text(color = "black")
   ) +
   scale_y_continuous(expand = c(0, 0)) +
   coord_cartesian(clip = "off")
